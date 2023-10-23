@@ -1,0 +1,62 @@
+System.out.println("1. Add Student");
+            System.out.println("2. Remove Student");
+            System.out.println("3. Search Student");
+            System.out.println("4. Display All Students");
+            System.out.println("5. Save Student Data");
+            System.out.println("6. Load Student Data");
+            System.out.println("7. Exit");
+            System.out.print("Select an option: ");
+
+            int choice = sc.nextInt();
+            sc.nextLine(); // Consume newline
+
+            switch (choice) {
+                case 1 -> {
+                    System.out.print("Enter student name: ");
+                    String name = sc.nextLine();
+                    System.out.print("Enter roll number: ");
+                    int rollNumber = sc.nextInt();
+                    sc.nextLine(); // Consume newline
+                    System.out.print("Enter grade: ");
+                    String grade = sc.nextLine();
+                    system.addStudent(new newStudent(name, rollNumber, grade));
+                }
+                case 2 -> {
+                    System.out.print("Enter roll number of student to remove: ");
+                    int rollNumberToRemove = sc.nextInt();
+                    system.removeStudent(rollNumberToRemove);
+                }
+                case 3 -> {
+                    System.out.print("Enter roll number of student to search: ");
+                    int rollNumberToSearch = sc.nextInt();
+                    newStudent searchedStudent = system.searchStudent(rollNumberToSearch);
+                    if (searchedStudent != null) {
+                        System.out.println("Student found:\n" + searchedStudent);
+                    } else {
+                        System.out.println("Student not found.");
+                    }
+                }
+                case 4 -> {
+                    System.out.println("All Students:");
+                    system.displayAllStudents();
+                }
+                case 5 -> {
+                    System.out.print("Enter filename to save student data: ");
+                    String saveFilename = sc.nextLine();
+                    system.saveStudentDataToFile(saveFilename);
+                }
+                case 6 -> {
+                    System.out.print("Enter filename to load student data: ");
+                    String loadFilename = sc.nextLine();
+                    system.loadStudentDataFromFile(loadFilename);
+                }
+                case 7 -> {
+                    System.out.println("Exiting Student Management System. Goodbye!");
+                    sc.close();
+                    System.exit(0);
+                }
+                default -> System.out.println("Invalid choice. Please select a valid option.");
+            }
+        }
+    }
+}
